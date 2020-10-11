@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CryptoChart</string>
+
+    <string name="the_index_is_calculated" translatable="false">The main cryptocurrencies chart \nPowered by CoinMarketCap </string>
+    <string name="rate_this_app_button_text">Rate This App</string>
+
+</resources>
