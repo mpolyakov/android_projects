@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.google.android.gms.ads.AdRequest
 import com.kt.std.cryptochart.R
 import kotlinx.android.synthetic.main.activity_about.*
 
@@ -23,5 +24,10 @@ class AboutActivity : AppCompatActivity() {
                 )
             )
         }
+
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+
     }
 }
