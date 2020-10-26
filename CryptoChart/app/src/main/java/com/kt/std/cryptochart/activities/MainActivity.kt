@@ -8,6 +8,7 @@ import android.view.MenuItem
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
 import com.kt.std.cryptochart.R
+import com.kt.std.cryptochart.fragments.CurrenciesListFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,6 +20,13 @@ class MainActivity : AppCompatActivity() {
         mInterstitialAd = InterstitialAd(this)
         mInterstitialAd.adUnitId = "ca-app-pub-7657396153657997/6690966083"
         mInterstitialAd.loadAd(AdRequest.Builder().build())
+
+        if (savedInstanceState == null) {
+            supportFragmentManager
+                .beginTransaction()
+                .add(R.id.container, CurrenciesListFragment(), null)
+                .commit()
+        }
     }
 
     private fun showAd(){
@@ -33,13 +41,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             R.id.action_about -> {
                 val intent = Intent(this, AboutActivity::class.java)

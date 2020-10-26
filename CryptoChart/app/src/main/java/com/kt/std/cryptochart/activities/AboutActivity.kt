@@ -14,6 +14,9 @@ class AboutActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_about)
 
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         buttonRateApp.setOnClickListener {
@@ -24,9 +27,6 @@ class AboutActivity : AppCompatActivity() {
                 )
             )
         }
-
-        val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
 
 
     }
