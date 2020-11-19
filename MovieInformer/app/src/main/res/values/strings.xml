@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Movie Informer</string>
+    <string name="api_key">104d11ad0d103ce0ab9a3ef76e51d9a8</string>
+    <string name="language">ru-RU</string>
+</resources>
