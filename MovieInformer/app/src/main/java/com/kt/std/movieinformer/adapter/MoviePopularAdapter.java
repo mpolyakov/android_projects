@@ -1,6 +1,7 @@
 package com.kt.std.movieinformer.adapter;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.kt.std.movieinformer.R;
 import com.kt.std.movieinformer.model.MoviePopularResult;
 
@@ -26,11 +28,17 @@ public class MoviePopularAdapter extends RecyclerView.Adapter<MoviePopularAdapte
     @NonNull
     @Override
     public MoviePopularViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popular_rv_item, parent,false);
+        return new MoviePopularViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MoviePopularViewHolder holder, int position) {
+
+        holder.titleTextView.setText(results.get(position).getTitle());
+        holder.popularityTextView.setText(Double.toString(results.get(position).getPopularity()));
+        String imagePath = "https://image.tmdb.org/t/p/w500/" + results.get(position).getPosterPath();
+        Glide.with(context).load(imagePath).placeholder(R.drawable.placeholder).into(holder.popularityImageView);
 
     }
 

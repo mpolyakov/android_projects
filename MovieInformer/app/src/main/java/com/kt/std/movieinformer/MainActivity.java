@@ -1,10 +1,13 @@
 package com.kt.std.movieinformer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.kt.std.movieinformer.adapter.MoviePopularAdapter;
 import com.kt.std.movieinformer.model.MoviePopularResponse;
 import com.kt.std.movieinformer.model.MoviePopularResult;
 import com.kt.std.movieinformer.service.MovieApiService;
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<MoviePopularResult> results;
     RecyclerView recyclerView;
+    private MoviePopularAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillPopularRecyclerView() {
         recyclerView = findViewById(R.id.rvPopular);
+        adapter = new MoviePopularAdapter(this, results);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
 
     }
